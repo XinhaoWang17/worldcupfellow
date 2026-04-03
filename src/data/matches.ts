@@ -3,6 +3,26 @@ import { TEAMS_BY_ID } from './teams';
 
 const T = TEAMS_BY_ID;
 
+// UTC offsets for each host city during summer 2026 (daylight saving time)
+const CITY_UTC_OFFSET: Record<string, string> = {
+  'Mexico City':           '-05:00',
+  'Guadalajara':           '-05:00',
+  'Monterrey':             '-05:00',
+  'New York / New Jersey': '-04:00',
+  'Boston':                '-04:00',
+  'Miami':                 '-04:00',
+  'Atlanta':               '-04:00',
+  'Philadelphia':          '-04:00',
+  'Houston':               '-05:00',
+  'Kansas City':           '-05:00',
+  'Dallas':                '-05:00',
+  'Los Angeles':           '-07:00',
+  'San Francisco Bay Area':'-07:00',
+  'Seattle':               '-07:00',
+  'Toronto':               '-04:00',
+  'Vancouver':             '-07:00',
+};
+
 // Helper to build a Match object
 function m(
   id: string,
@@ -16,9 +36,14 @@ function m(
   group?: string,
   matchday?: number
 ): Match {
+  // Append UTC offset so dates are timezone-aware and display in the viewer's local time
+  const offset = CITY_UTC_OFFSET[city] ?? '-05:00';
+  const isoDate = date.includes('+') || date.includes('Z') || /[+-]\d\d:\d\d$/.test(date)
+    ? date
+    : `${date}${offset}`;
   return {
     id,
-    date,
+    date: isoDate,
     homeTeam: T[homeId],
     awayTeam: T[awayId],
     homeScore: null,

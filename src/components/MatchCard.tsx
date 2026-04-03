@@ -106,12 +106,8 @@ export default function MatchCard({ match, style }: Props) {
       <View style={styles.matchRow}>
         {/* Home team */}
         <View style={styles.teamBlock}>
-          <Text style={styles.flag}>{match.homeTeam.flagEmoji}</Text>
-          <Text
-            style={[styles.teamName, { color: colors.text }]}
-            numberOfLines={2}
-          >
-            {match.homeTeam.nameZh}
+          <Text style={[styles.teamInline, { color: colors.text }]} numberOfLines={2}>
+            {match.homeTeam.flagEmoji} {match.homeTeam.nameZh}
           </Text>
         </View>
 
@@ -120,12 +116,8 @@ export default function MatchCard({ match, style }: Props) {
 
         {/* Away team */}
         <View style={[styles.teamBlock, styles.teamBlockRight]}>
-          <Text style={styles.flag}>{match.awayTeam.flagEmoji}</Text>
-          <Text
-            style={[styles.teamName, { color: colors.text }]}
-            numberOfLines={2}
-          >
-            {match.awayTeam.nameZh}
+          <Text style={[styles.teamInline, { color: colors.text }]} numberOfLines={2}>
+            {match.awayTeam.flagEmoji} {match.awayTeam.nameZh}
           </Text>
         </View>
       </View>
@@ -195,15 +187,11 @@ const styles = StyleSheet.create({
   teamBlockRight: {
     alignItems: 'center',
   },
-  flag: {
-    fontSize: 32,
-    lineHeight: 40,
-  },
-  teamName: {
-    fontSize: 12,
+  teamInline: {
+    fontSize: 13,
     fontWeight: '600',
     textAlign: 'center',
-    marginTop: 2,
+    lineHeight: 20,
   },
   scoreBox: {
     flex: 0,

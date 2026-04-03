@@ -8,8 +8,6 @@ interface Props {
 }
 
 const COL_WIDTHS = {
-  flag: 28,
-  name: 80,
   stat: 28,
   pts: 32,
 };
@@ -37,9 +35,8 @@ function StandingRow({
       <Text style={[styles.pos, { color: colors.textMuted }]}>
         {standing.position}
       </Text>
-      <Text style={[styles.flag]}>{standing.team.flagEmoji}</Text>
       <Text style={[styles.name, { color: colors.text }]} numberOfLines={1}>
-        {standing.team.nameZh}
+        {standing.team.flagEmoji} {standing.team.nameZh}
       </Text>
       <Text style={[styles.stat, { color: colors.textSecondary }]}>{standing.played}</Text>
       <Text style={[styles.stat, { color: colors.textSecondary }]}>{standing.won}</Text>
@@ -68,7 +65,6 @@ export default function GroupTable({ group }: Props) {
       {/* Column headers */}
       <View style={[styles.row, styles.headerRow, { borderBottomColor: colors.border }]}>
         <Text style={[styles.pos, { color: colors.textMuted }]}>#</Text>
-        <Text style={[styles.flag, { color: colors.textMuted }]}> </Text>
         <Text style={[styles.name, { color: colors.textMuted, fontWeight: '600' }]}>球队</Text>
         <Text style={[styles.stat, { color: colors.textMuted }]}>赛</Text>
         <Text style={[styles.stat, { color: colors.textMuted }]}>胜</Text>
@@ -130,11 +126,6 @@ const styles = StyleSheet.create({
   pos: {
     width: 20,
     fontSize: 12,
-    textAlign: 'center',
-  },
-  flag: {
-    width: COL_WIDTHS.flag,
-    fontSize: 18,
     textAlign: 'center',
   },
   name: {
