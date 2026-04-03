@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "World Cup Fellow",
+    "slug": "worldcupfellow",
+    "version": "1.0.0",
+    "scheme": "worldcupfellow",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0C1D33"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.worldcupfellow"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0C1D33"
+      },
+      "package": "com.worldcupfellow"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
